@@ -22,7 +22,7 @@ abstract class Args {
    *
    * @return SOURCE
    */
-  @PositionalParameter
+  @PositionalParameter(position = 1)
   abstract Path getSource();
 
   /**
@@ -30,7 +30,7 @@ abstract class Args {
    *
    * @return DEST
    */
-  @PositionalParameter(position = 1)
+  @PositionalParameter(position = 2)
   abstract Path getDest();
 
   /**
