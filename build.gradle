@@ -1,11 +1,10 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
-    id "application"
+    id 'application'
 }
 
 sourceCompatibility = '1.8'
 
-mainClassName = "net.jbock.cp.CopyFile"
+mainClassName = 'net.jbock.cp.CopyFile'
 
 repositories {
     mavenCentral()
@@ -14,11 +13,5 @@ repositories {
 dependencies {
     compileOnly "com.github.h908714124:jbock-annotations:2.6"
     annotationProcessor "com.github.h908714124:jbock:2.8.6"
-}
-
-jar {
-    manifest {
-        attributes 'Main-Class': "$mainClassName"
-    }
 }
 
