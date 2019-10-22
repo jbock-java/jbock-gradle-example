@@ -5,7 +5,9 @@
 
 ### Gradle config
 
-In a gradle project, jbock is configured by adding two dependencies to `build.gradle`:
+In a gradle project,
+[jbock](https://github.com/h908714124/jbock)
+is configured by adding two dependencies to `build.gradle`:
 
 ````groovy
 compileOnly "com.github.h908714124:jbock-annotations:$jbockAnnotationVersion"
