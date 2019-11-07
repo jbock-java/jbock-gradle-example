@@ -14,6 +14,9 @@ compileOnly "com.github.h908714124:jbock-annotations:$jbockAnnotationVersion"
 annotationProcessor "com.github.h908714124:jbock:$jbockVersion"
 ````
 
+If you use [idea](https://www.jetbrains.com/idea/) and the IDE doesn't "see" the generated code,
+try deleting the project's `.idea` folder and reimporting the project.
+
 ### Try it
 
 ````sh
