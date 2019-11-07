@@ -14,7 +14,7 @@ compileOnly "com.github.h908714124:jbock-annotations:$jbockAnnotationVersion"
 annotationProcessor "com.github.h908714124:jbock:$jbockVersion"
 ````
 
-### Try it out
+### Try it
 
 ````sh
 gradle clean run --args='-r ~/Documents /media/archive'
