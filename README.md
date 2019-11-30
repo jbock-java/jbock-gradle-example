@@ -20,6 +20,6 @@ try deleting the project's `.idea` folder and reimporting the project.
 ### Try it
 
 ````sh
-gradle clean run --args='-r ~/Documents /media/archive'
+./gradlew clean run --args='-r ~/Documents /media/archive'
 ````
 
