@@ -2,6 +2,12 @@ plugins {
     id 'application'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(15)
+    }
+}
+
 compileJava {
     options.encoding = 'UTF-8'
     sourceCompatibility = '8'
