@@ -20,8 +20,15 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': "$mainClassName"
+    }
+}
+
+
 dependencies {
-    compileOnly "com.github.h908714124:jbock-annotations:3.4"
-    annotationProcessor "com.github.h908714124:jbock:3.4.013"
+    compileOnly "com.github.h908714124:jbock-annotations:3.5"
+    annotationProcessor "com.github.h908714124:jbock:3.5.000"
 }
 
