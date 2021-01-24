@@ -29,6 +29,6 @@ jar {
 
 dependencies {
     compileOnly "com.github.h908714124:jbock-annotations:3.5"
-    annotationProcessor "com.github.h908714124:jbock:3.5.002"
+    annotationProcessor "com.github.h908714124:jbock:3.5.003"
 }
 
