@@ -10,12 +10,9 @@ In a gradle project,
 is configured by adding two dependencies to `build.gradle`:
 
 ````groovy
-compileOnly "com.github.h908714124:jbock-annotations:$jbockAnnotationVersion"
-annotationProcessor "com.github.h908714124:jbock:$jbockVersion"
+compileOnly "com.github.h908714124:jbock-annotations:3.6"
+annotationProcessor "com.github.h908714124:jbock:3.6.001"
 ````
-
-If you use [idea](https://www.jetbrains.com/idea/) and the IDE doesn't "see" the generated code,
-try deleting the project's `.idea` folder and reimporting the project.
 
 ### Try it
 

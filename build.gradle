@@ -4,31 +4,26 @@ plugins {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(15)
+        languageVersion = JavaLanguageVersion.of(16)
     }
 }
 
 compileJava {
     options.encoding = 'UTF-8'
-    sourceCompatibility = '8'
-    targetCompatibility = '8'
+    sourceCompatibility = '16'
+    targetCompatibility = '16'
 }
 
-mainClassName = 'net.jbock.cp.CopyFile'
+application {
+    mainClass = 'net.jbock.cp.CopyFile'
+}
 
 repositories {
     mavenCentral()
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': "$mainClassName"
-    }
-}
-
-
 dependencies {
-    compileOnly "com.github.h908714124:jbock-annotations:3.5"
-    annotationProcessor "com.github.h908714124:jbock:3.5.005"
+    compileOnly "com.github.h908714124:jbock-annotations:3.6"
+    annotationProcessor "com.github.h908714124:jbock:3.6.001"
 }
 
