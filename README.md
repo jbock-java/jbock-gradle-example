@@ -8,7 +8,7 @@ is configured by adding two dependencies to `build.gradle`:
 
 ````groovy
 compileOnly 'com.github.h908714124:jbock-annotations:3.6'
-annotationProcessor 'com.github.h908714124:jbock:3.6.004'
+annotationProcessor 'com.github.h908714124:jbock:3.6.005'
 ````
 
 ### Try it
