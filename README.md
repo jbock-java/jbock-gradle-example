@@ -7,8 +7,8 @@ In a gradle project,
 is configured by adding two dependencies to `build.gradle`:
 
 ````groovy
-compileOnly 'com.github.h908714124:jbock-annotations:4.1'
-annotationProcessor 'com.github.h908714124:jbock:4.1.001'
+compileOnly 'com.github.h908714124:jbock-annotations:4.2'
+annotationProcessor 'com.github.h908714124:jbock:4.2.000'
 ````
 
 ### Try it
