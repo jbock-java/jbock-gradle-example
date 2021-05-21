@@ -26,7 +26,7 @@ repositories {
 
 dependencies {
     compileOnly 'com.github.h908714124:jbock-annotations:4.3'
-    annotationProcessor 'com.github.h908714124:jbock:4.3.000'
+    annotationProcessor 'com.github.h908714124:jbock:4.3.001'
 }
 
 task jarWithDeps(dependsOn: 'jar', type: Copy) {
