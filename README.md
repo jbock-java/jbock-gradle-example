@@ -7,13 +7,14 @@ In a gradle project,
 is configured by adding two dependencies to `build.gradle`:
 
 ````groovy
-compileOnly 'com.github.h908714124:jbock-annotations:4.2'
-annotationProcessor 'com.github.h908714124:jbock:4.2.000'
+compileOnly 'com.github.h908714124:jbock-annotations:4.3'
+annotationProcessor 'com.github.h908714124:jbock:4.3.000'
 ````
 
 ### Try it
 
 ````sh
-./gradlew clean run --args='-r ~/Documents /media/archive'
+./gradlew clean build
+./package
+./cp --help
 ````
-

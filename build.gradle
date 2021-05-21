@@ -1,5 +1,5 @@
 plugins {
-    id 'application'
+    id 'java'
 }
 
 java {
@@ -14,8 +14,10 @@ compileJava {
     targetCompatibility = '16'
 }
 
-application {
-    mainClass = 'net.jbock.cp.CopyFile'
+jar {
+    manifest {
+        attributes 'Main-Class': 'net.jbock.cp.CopyFile'
+    }
 }
 
 repositories {
@@ -23,7 +25,14 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.github.h908714124:jbock-annotations:4.2'
-    annotationProcessor 'com.github.h908714124:jbock:4.2.000'
+    compileOnly 'com.github.h908714124:jbock-annotations:4.3'
+    annotationProcessor 'com.github.h908714124:jbock:4.3.000'
 }
 
+task jarWithDeps(dependsOn: 'jar', type: Copy) {
+    def conf = configurations.compileClasspath
+    from conf.allDependencies.collect { conf.files(it) }
+    into "${project.buildDir}/libs"
+}
+
+tasks.build.dependsOn(jarWithDeps)
