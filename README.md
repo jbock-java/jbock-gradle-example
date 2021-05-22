@@ -4,7 +4,7 @@
 
 In a gradle project,
 [jbock](https://github.com/h908714124/jbock)
-is configured by adding two dependencies to `build.gradle`:
+is configured by adding two dependencies:
 
 ````groovy
 compileOnly 'com.github.h908714124:jbock-annotations:4.3'
