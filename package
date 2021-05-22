@@ -7,4 +7,7 @@ IFS=:
 MODULE_PATH=`echo "${JARS[*]}"`
 rm -rf out
 jpackage --name cp --type app-image --module-path "$MODULE_PATH" --module jbock.gradle.example/net.jbock.cp.CopyFile --dest out
-
+echo '#!/usr/bin/env bash' >>cp
+EXECUTABLE=`find out -type f -name cp`
+echo "$EXECUTABLE" '$@' >>cp
+chmod +x cp
