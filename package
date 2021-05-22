@@ -7,7 +7,7 @@ JARS=()
 for JAR in `find build/libs -name "*.jar"`; do
   JARS+=($JAR)
 done
-MODULE_PATH=`join_tokens "${JARS[@]}"`
+MODULE_PATH=`join_tokens ${JARS[@]}`
 rm -rf out
 jpackage --name cp --type app-image --module-path $MODULE_PATH --module jbock.gradle.example/net.jbock.cp.CopyFile --dest out
 
