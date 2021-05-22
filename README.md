@@ -22,5 +22,6 @@ annotationProcessor 'com.github.h908714124:jbock:4.3.001'
 
 ### See also
 
+* [jbock](https://github.com/h908714124/jbock)
 * [jbock-maven-example](https://github.com/h908714124/jbock-maven-example)
 
