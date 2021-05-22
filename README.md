@@ -8,7 +8,7 @@ is configured by adding two dependencies:
 
 ````groovy
 compileOnly 'com.github.h908714124:jbock-annotations:4.3'
-annotationProcessor 'com.github.h908714124:jbock:4.3.001'
+annotationProcessor 'com.github.h908714124:jbock:4.3.002'
 ````
 
 ### Try it
