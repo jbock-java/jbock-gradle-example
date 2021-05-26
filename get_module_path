@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+join_tokens () {
+  local IFS=:
+  echo "$*"
+}
+JARS=()
+for JAR in `find build/libs -name "*.jar"`; do
+  JARS+=($JAR)
+done
+MODULE_PATH=`join_tokens ${JARS[@]}`
+echo "$MODULE_PATH"

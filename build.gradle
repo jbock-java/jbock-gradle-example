@@ -27,8 +27,6 @@ repositories {
 dependencies {
     compileOnly 'com.github.h908714124:jbock-annotations:4.4'
     annotationProcessor 'com.github.h908714124:jbock:4.4.000'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.3'
 }
 
 task jarWithDeps(dependsOn: 'jar', type: Copy) {

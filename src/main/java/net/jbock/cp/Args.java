@@ -1,15 +1,14 @@
 package net.jbock.cp;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.jbock.Command;
 import net.jbock.Option;
 import net.jbock.Parameter;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.nio.file.Path;
 import java.util.Optional;
+import java.util.StringJoiner;
 
 /**
  * Copy SOURCE to DEST
@@ -22,43 +21,46 @@ abstract class Args {
      * @return SOURCE
      */
     @Parameter(index = 0)
-    abstract Path getSource();
+    abstract Path source();
 
     /**
      * Copy destination
      * @return DEST
      */
     @Parameter(index = 1)
-    abstract Path getDest();
+    abstract Path dest();
 
     /**
      * Copy directories recursively
      */
     @Option(names = {"--recursive", "-r"})
-    abstract boolean isRecursive();
+    abstract boolean recursive();
 
     /**
      * Make a backup of each existing destination file
      */
     @Option(names = {"--backup", "-b"})
-    abstract boolean isBackup();
+    abstract boolean backup();
 
     /**
      * Override the usual backup suffix
      */
     @Option(names = {"--suffix", "-s"})
-    abstract Optional<String> getSuffix();
-
+    abstract Optional<String> suffix();
 
     @Override
     public String toString() {
-        try {
-            return new ObjectMapper()
-                    .setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.ANY)
-                    .writerWithDefaultPrettyPrinter()
-                    .writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        StringJoiner joiner = new StringJoiner(",\n  ", "{\n  ", "\n}");
+        Method[] methods = getClass().getSuperclass().getDeclaredMethods();
+        for (Method method : methods) {
+            if (Modifier.isAbstract(method.getModifiers())) {
+                try {
+                    joiner.add(method.getName() + ": " + method.invoke(this));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
+        return joiner.toString();
     }
 }
