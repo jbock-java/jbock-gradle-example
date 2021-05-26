@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 echo '#!/usr/bin/env bash'
-EXECUTABLE=`find out -type f -name cp`
+EXECUTABLE=`find build/out -type f -name cp`
 echo "$EXECUTABLE" '$@'
 

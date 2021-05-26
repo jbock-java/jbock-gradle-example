@@ -15,8 +15,7 @@ annotationProcessor 'com.github.h908714124:jbock:4.4.000'
 
 ````sh
 ./gradlew clean build
-rm -rf out
-jpackage --name cp --type app-image --module-path `./get_module_path` --module jbock.gradle.example/net.jbock.cp.CopyFile --dest out
+jpackage --name cp --type app-image --module-path `./get_module_path` --module jbock.gradle.example/net.jbock.cp.CopyFile --dest build/out
 ./create_launcher_script >cp
 chmod +x cp
 ./cp --help
