@@ -1,14 +1,15 @@
 package net.jbock.cp;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.jbock.Command;
 import net.jbock.Option;
 import net.jbock.Parameter;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.nio.file.Path;
 import java.util.Optional;
-import java.util.StringJoiner;
 
 /**
  * Copy SOURCE to DEST
@@ -21,14 +22,14 @@ abstract class Args {
      * @return SOURCE
      */
     @Parameter(index = 0)
-    abstract Path source();
+    abstract Path getSource();
 
     /**
      * Copy destination
      * @return DEST
      */
     @Parameter(index = 1)
-    abstract Path dest();
+    abstract Path getDest();
 
     /**
      * Copy directories recursively
@@ -51,17 +52,13 @@ abstract class Args {
 
     @Override
     public String toString() {
-        StringJoiner joiner = new StringJoiner(",\n  ", "{\n  ", "\n}");
-        Method[] methods = getClass().getSuperclass().getDeclaredMethods();
-        for (Method method : methods) {
-            if (Modifier.isAbstract(method.getModifiers())) {
-                try {
-                    joiner.add(method.getName() + ": " + method.invoke(this));
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            }
+        try {
+            return new ObjectMapper()
+                    .setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.ANY)
+                    .writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
         }
-        return joiner.toString();
     }
 }
