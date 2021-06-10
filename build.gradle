@@ -2,6 +2,12 @@ plugins {
     id 'java'
 }
 
+repositories {
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1000' }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1001' }
+}
+
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(11)
@@ -25,8 +31,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.github.h908714124:jbock-annotations:4.4'
-    annotationProcessor 'com.github.h908714124:jbock:4.4.000'
+    implementation 'io.github.jbock-java:jbock:5.0'
+    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.0'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.7.1')
 }
 
 task jarWithDeps(dependsOn: 'jar', type: Copy) {
@@ -36,3 +43,10 @@ task jarWithDeps(dependsOn: 'jar', type: Copy) {
 }
 
 tasks.build.dependsOn(jarWithDeps)
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events('failed')
+    }
+}
