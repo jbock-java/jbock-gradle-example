@@ -3,8 +3,7 @@ plugins {
 }
 
 repositories {
-    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1000' }
-    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1001' }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1003' }
 }
 
 
