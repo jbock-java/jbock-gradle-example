@@ -2,11 +2,6 @@ plugins {
     id 'java'
 }
 
-repositories {
-    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1003' }
-}
-
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(11)
