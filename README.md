@@ -9,6 +9,12 @@ implementation 'io.github.jbock-java:jbock:5.0'
 annotationProcessor 'io.github.jbock-java:jbock-compiler:5.0'
 ````
 
+If you use the module system, add this line in your `module-info.java`:
+
+````java
+requires net.jbock;
+````
+
 ### Try it
 
 ````sh
