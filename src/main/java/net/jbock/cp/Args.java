@@ -1,64 +1,38 @@
 package net.jbock.cp;
 
-import net.jbock.Command;
-import net.jbock.Option;
-import net.jbock.Parameter;
+import com.beust.jcommander.Parameter;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.nio.file.Path;
-import java.util.Optional;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
-/**
- * Copy SOURCE to DEST
- */
-@Command(name = "cp")
-abstract class Args {
+public class Args {
 
-    /**
-     * Path or file of directory to copy.
-     * @return SOURCE
-     */
-    @Parameter(index = 0)
-    abstract Path source();
+    @Parameter
+    private List<String> parameters = new ArrayList<>();
 
-    /**
-     * Copy destination
-     * @return DEST
-     */
-    @Parameter(index = 1)
-    abstract Path dest();
+    @Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity")
+    private Integer verbose = 1;
 
-    /**
-     * Copy directories recursively
-     */
-    @Option(names = {"--recursive", "-r"})
-    abstract boolean recursive();
+    @Parameter(names = "-groups", description = "Comma-separated list of group names to be run. This is where the fun begins.")
+    private String groups;
 
-    /**
-     * Make a backup of each existing destination file
-     */
-    @Option(names = {"--backup", "-b"})
-    abstract boolean backup();
+    @Parameter(names = "-debug", description = "Debug mode")
+    private boolean debug = false;
 
-    /**
-     * Override the usual backup suffix
-     */
-    @Option(names = {"--suffix", "-s"})
-    abstract Optional<String> suffix();
+    @Parameter(names = "--help", help = true)
+    boolean help;
 
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(",\n  ", "{\n  ", "\n}");
-        Method[] methods = getClass().getSuperclass().getDeclaredMethods();
-        for (Method method : methods) {
-            if (Modifier.isAbstract(method.getModifiers())) {
-                try {
-                    joiner.add(method.getName() + ": " + method.invoke(this));
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+        Field[] fields = getClass().getDeclaredFields();
+        for (Field field : fields) {
+            try {
+                joiner.add(field.getName() + ": " + field.get(this));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }
         return joiner.toString();
