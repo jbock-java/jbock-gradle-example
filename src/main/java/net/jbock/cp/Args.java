@@ -1,31 +1,67 @@
 package net.jbock.cp;
 
-import com.beust.jcommander.Parameter;
+import picocli.CommandLine;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Path;
 import java.util.StringJoiner;
 
-public class Args {
+/**
+ * Copy SOURCE to DEST
+ */
+@CommandLine.Command(name = "cp")
+class Args implements Runnable {
 
-    @Parameter
-    private List<String> parameters = new ArrayList<>();
+    /**
+     * Path or file of directory to copy.
+     * @return SOURCE
+     */
+    @CommandLine.Parameters(index = "0", description = {
+            "Kids, I swear, I'm gonna love all of you,",
+            "and equally. I'll be dividing my love",
+            "into seven equal sections, or \"Love Quadrants\".",
+            "Each quadrant will be worth 15 \"Love Units\"",
+            "represented by these small brass marbles.",
+            "You may use these marbles as currency amongst yourselves.",
+            "Collect 35 \"Love Units\", you can trade those in for a",
+            "beach towel with my face on it."})
+    Path source;
 
-    @Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity")
-    private Integer verbose = 1;
+    /**
+     * Copy destination
+     * @return DEST
+     */
+    @CommandLine.Parameters(index = "1", description = {
+            "Kids, I swear, I'm gonna love all of you, " +
+                    "and equally. I'll be dividing my love " +
+                    "into seven equal sections, or \"Love Quadrants\". " +
+                    "Each quadrant will be worth 15 \"Love Units\" " +
+                    "represented by these small brass marbles. " +
+                    "You may use these marbles as currency amongst yourselves. " +
+                    "Collect 35 \"Love Units\", you can trade those in for a " +
+                    "beach towel with my face on it."})
+    Path dest;
 
-    @Parameter(names = "-groups", description = "Comma-separated list of group names to be run. This is where the fun begins.")
-    private String groups;
+    /**
+     * Copy directories recursively
+     */
+    @CommandLine.Option(names = {"--recursive", "-r"})
+    boolean recursive;
 
-    @Parameter(names = "-debug", description = "Debug mode")
-    private boolean debug = false;
+    /**
+     * Make a backup of each existing destination file
+     */
+    @CommandLine.Option(names = {"--backup", "-b"})
+    boolean backup;
 
-    @Parameter(names = "--help", help = true)
-    boolean help;
+    /**
+     * Override the usual backup suffix
+     */
+    @CommandLine.Option(names = {"--suffix", "-s"})
+    String suffix;
 
     @Override
-    public String toString() {
+    public void run() {
         StringJoiner joiner = new StringJoiner(",\n  ", "{\n  ", "\n}");
         Field[] fields = getClass().getDeclaredFields();
         for (Field field : fields) {
@@ -35,6 +71,6 @@ public class Args {
                 throw new RuntimeException(e);
             }
         }
-        return joiner.toString();
+        System.out.println(joiner);
     }
 }

@@ -1,21 +1,12 @@
 package net.jbock.cp;
 
-import com.beust.jcommander.JCommander;
+import picocli.CommandLine;
 
 public class CopyFile {
 
     public static void main(String[] args) {
-        Args jct = new Args();
-        JCommander jCommander = JCommander.newBuilder()
-                .addObject(jct)
-                .expandAtSign(true)
-                .build();
-        jCommander.parse(args);
-
-        if (jct.help) {
-            jCommander.usage();
-            return;
-        }
-        System.out.println(jct);
+        int exitCode = new CommandLine(new Args())
+                .execute(args);
+        System.exit(exitCode);
     }
 }
