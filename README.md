@@ -19,7 +19,7 @@ requires net.jbock;
 
 ````sh
 ./gradlew clean build
-java -cp build/libs/jcommander-1.81.jar:build/libs/jbock-gradle-example.jar net.jbock.cp.CopyFile @opts.txt
+java -cp build/libs/picocli-4.6.1.jar:build/libs/jbock-gradle-example.jar net.jbock.cp.CopyFile @opts.txt
 ````
 
 
