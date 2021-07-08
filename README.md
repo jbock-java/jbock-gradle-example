@@ -15,7 +15,7 @@ Add this to `module-info.java`:
 requires net.jbock;
 ````
 
-### Try it
+### Run it
 
 ````sh
 ./gradlew clean build
