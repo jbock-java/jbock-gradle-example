@@ -22,11 +22,12 @@ jar {
 
 repositories {
     mavenCentral()
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/iogithubjbock-java-1030' }
 }
 
 dependencies {
-    implementation 'io.github.jbock-java:jbock:5.3'
-    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.3'
+    implementation 'io.github.jbock-java:jbock:5.4'
+    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.4'
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.1')
 }
 
