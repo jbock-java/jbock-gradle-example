@@ -5,8 +5,8 @@
 Add these dependencies:
 
 ````groovy
-implementation 'io.github.jbock-java:jbock:5.12'
-annotationProcessor 'io.github.jbock-java:jbock-compiler:5.12'
+implementation 'io.github.jbock-java:jbock:5.13'
+annotationProcessor 'io.github.jbock-java:jbock-compiler:5.13'
 ````
 
 Add this to `module-info.java`:
