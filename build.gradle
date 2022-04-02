@@ -25,8 +25,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.github.jbock-java:jbock:5.13'
-    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.13'
+    implementation 'io.github.jbock-java:jbock:5.14'
+    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.14'
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.1')
 }
 
