@@ -4,7 +4,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -25,8 +25,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.github.jbock-java:jbock:5.14'
-    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.14'
+    implementation 'io.github.jbock-java:jbock:5.15'
+    annotationProcessor 'io.github.jbock-java:jbock-compiler:5.15'
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.1')
 }
 
