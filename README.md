@@ -22,6 +22,7 @@ requires net.jbock;
 jpackage --name cp --type app-image --module-path `./get_module_path` --module jbock.gradle.example/net.jbock.cp.CopyFile --dest build/out
 ./create_launcher_script >cp && chmod +x cp
 ./cp --help
+./cp 1 2 -rbs 2
 ````
 
 
