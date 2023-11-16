@@ -4,11 +4,8 @@ import net.jbock.Command;
 import net.jbock.Option;
 import net.jbock.Parameter;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.nio.file.Path;
 import java.util.Optional;
-import java.util.StringJoiner;
 
 /**
  * Copy SOURCE to DEST
