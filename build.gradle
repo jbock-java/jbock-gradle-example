@@ -27,17 +27,16 @@ repositories {
 dependencies {
     implementation 'io.github.jbock-java:jbock:5.19'
     annotationProcessor 'io.github.jbock-java:jbock-compiler:5.19'
-    testImplementation('org.junit.jupiter:junit-jupiter:5.10.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.register('jarWithDeps', Copy) {
-    dependsOn 'jar'
-    def conf = configurations.compileClasspath
-    from conf.allDependencies.collect { conf.files(it) }
-    into layout.buildDirectory.dir('libs')
+tasks.register('copyDependencies', Copy) {
+    from configurations.compileClasspath
+    into 'dependencies'
 }
 
-tasks.build.dependsOn(jarWithDeps)
+tasks.build.dependsOn(copyDependencies)
 
 test {
     useJUnitPlatform()

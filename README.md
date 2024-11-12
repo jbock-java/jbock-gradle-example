@@ -18,6 +18,7 @@ requires net.jbock;
 ### Run it
 
 ````sh
+rm -rf dependencies
 ./gradlew clean build
 ./cp --help
 ./cp -rbs 1 2 3
