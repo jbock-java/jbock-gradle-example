@@ -7,5 +7,4 @@ JARS=()
 for JAR in build/libs/*.jar dependencies/*.jar; do
   JARS+=($JAR)
 done
-MODULE_PATH=`join_tokens ${JARS[@]}`
-echo "$MODULE_PATH"
+join_tokens ${JARS[@]}
