@@ -27,10 +27,14 @@ dependencies {
 
 tasks.register('copyDependencies', Copy) {
     from configurations.compileClasspath
-    into 'dependencies'
+    into "${rootDir}/dependencies"
 }
 
 tasks.build.dependsOn(copyDependencies)
+
+clean.doFirst {
+    delete "${rootDir}/dependencies"
+}
 
 test {
     useJUnitPlatform()

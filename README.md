@@ -1,7 +1,6 @@
 # jbock-gradle-example
 
 ````sh
-rm -rf dependencies
 ./gradlew clean build
 ./cp --help
 ./cp -rbs 1 2 3
