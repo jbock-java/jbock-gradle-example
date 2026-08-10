@@ -16,8 +16,8 @@ java {
 }
 
 dependencies {
-    implementation("io.github.jbock-java:jbock:5.21")
-    annotationProcessor("io.github.jbock-java:jbock-compiler:5.21")
+    implementation("io.github.jbock-java:jbock:5.22")
+    annotationProcessor("io.github.jbock-java:jbock-compiler:5.22")
     testImplementation(platform("org.junit:junit-bom:6.1.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
