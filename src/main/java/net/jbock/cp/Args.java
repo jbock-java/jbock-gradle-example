@@ -1,5 +1,6 @@
 package net.jbock.cp;
 
+import net.jbock.ColorMode;
 import net.jbock.Command;
 import net.jbock.Option;
 import net.jbock.Parameter;
@@ -10,7 +11,7 @@ import java.util.Optional;
 /**
  * Copy SOURCE to DEST
  */
-@Command(name = "cp")
+@Command(name = "cp", colorMode = ColorMode.AUTO)
 interface Args {
 
     /**
